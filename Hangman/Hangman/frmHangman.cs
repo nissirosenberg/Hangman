@@ -165,6 +165,10 @@ namespace Hangman
             }
 
             DetectWinnerLoser();
+            if (gamestatus == GameStatusEnum.Loser)
+            {
+                lstlettertextboxes.ForEach(s => s.ForeColor = Color.Black);
+            }
 
         }
 
