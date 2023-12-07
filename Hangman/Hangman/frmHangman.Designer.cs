@@ -63,7 +63,7 @@
             btnN = new Button();
             btnM = new Button();
             btnIGiveUp = new Button();
-            tableLayoutPanel2 = new TableLayoutPanel();
+            tblWord = new TableLayoutPanel();
             lbl1 = new Label();
             lbl2 = new Label();
             lbl3 = new Label();
@@ -77,7 +77,7 @@
             tblKeyboardTop.SuspendLayout();
             tblKeyboardMiddle.SuspendLayout();
             tblKeyboardBottom.SuspendLayout();
-            tableLayoutPanel2.SuspendLayout();
+            tblWord.SuspendLayout();
             SuspendLayout();
             // 
             // pbxHangman
@@ -103,7 +103,7 @@
             tblMain.Controls.Add(tblKeyboardMiddle, 1, 5);
             tblMain.Controls.Add(tblKeyboardBottom, 0, 6);
             tblMain.Controls.Add(pbxHangman, 0, 0);
-            tblMain.Controls.Add(tableLayoutPanel2, 1, 2);
+            tblMain.Controls.Add(tblWord, 1, 2);
             tblMain.Dock = DockStyle.Fill;
             tblMain.Location = new Point(0, 0);
             tblMain.Name = "tblMain";
@@ -619,32 +619,32 @@
             btnIGiveUp.Text = "I Give Up";
             btnIGiveUp.UseVisualStyleBackColor = false;
             // 
-            // tableLayoutPanel2
+            // tblWord
             // 
-            tableLayoutPanel2.ColumnCount = 9;
-            tableLayoutPanel2.ColumnStyles.Add(new ColumnStyle(SizeType.Percent, 11.1111107F));
-            tableLayoutPanel2.ColumnStyles.Add(new ColumnStyle(SizeType.Percent, 11.1111107F));
-            tableLayoutPanel2.ColumnStyles.Add(new ColumnStyle(SizeType.Percent, 11.1111107F));
-            tableLayoutPanel2.ColumnStyles.Add(new ColumnStyle(SizeType.Percent, 11.1111107F));
-            tableLayoutPanel2.ColumnStyles.Add(new ColumnStyle(SizeType.Percent, 11.1111107F));
-            tableLayoutPanel2.ColumnStyles.Add(new ColumnStyle(SizeType.Percent, 11.1111107F));
-            tableLayoutPanel2.ColumnStyles.Add(new ColumnStyle(SizeType.Percent, 11.1111107F));
-            tableLayoutPanel2.ColumnStyles.Add(new ColumnStyle(SizeType.Percent, 11.1111107F));
-            tableLayoutPanel2.ColumnStyles.Add(new ColumnStyle(SizeType.Percent, 11.1111107F));
-            tableLayoutPanel2.Controls.Add(lbl1, 1, 0);
-            tableLayoutPanel2.Controls.Add(lbl2, 2, 0);
-            tableLayoutPanel2.Controls.Add(lbl3, 3, 0);
-            tableLayoutPanel2.Controls.Add(lbl4, 4, 0);
-            tableLayoutPanel2.Controls.Add(lbl5, 5, 0);
-            tableLayoutPanel2.Controls.Add(lbl6, 6, 0);
-            tableLayoutPanel2.Controls.Add(lbl7, 7, 0);
-            tableLayoutPanel2.Dock = DockStyle.Fill;
-            tableLayoutPanel2.Location = new Point(384, 183);
-            tableLayoutPanel2.Name = "tableLayoutPanel2";
-            tableLayoutPanel2.RowCount = 1;
-            tableLayoutPanel2.RowStyles.Add(new RowStyle(SizeType.Percent, 100F));
-            tableLayoutPanel2.Size = new Size(638, 84);
-            tableLayoutPanel2.TabIndex = 4;
+            tblWord.ColumnCount = 9;
+            tblWord.ColumnStyles.Add(new ColumnStyle(SizeType.Percent, 11.1111107F));
+            tblWord.ColumnStyles.Add(new ColumnStyle(SizeType.Percent, 11.1111107F));
+            tblWord.ColumnStyles.Add(new ColumnStyle(SizeType.Percent, 11.1111107F));
+            tblWord.ColumnStyles.Add(new ColumnStyle(SizeType.Percent, 11.1111107F));
+            tblWord.ColumnStyles.Add(new ColumnStyle(SizeType.Percent, 11.1111107F));
+            tblWord.ColumnStyles.Add(new ColumnStyle(SizeType.Percent, 11.1111107F));
+            tblWord.ColumnStyles.Add(new ColumnStyle(SizeType.Percent, 11.1111107F));
+            tblWord.ColumnStyles.Add(new ColumnStyle(SizeType.Percent, 11.1111107F));
+            tblWord.ColumnStyles.Add(new ColumnStyle(SizeType.Percent, 11.1111107F));
+            tblWord.Controls.Add(lbl1, 1, 0);
+            tblWord.Controls.Add(lbl2, 2, 0);
+            tblWord.Controls.Add(lbl3, 3, 0);
+            tblWord.Controls.Add(lbl4, 4, 0);
+            tblWord.Controls.Add(lbl5, 5, 0);
+            tblWord.Controls.Add(lbl6, 6, 0);
+            tblWord.Controls.Add(lbl7, 7, 0);
+            tblWord.Dock = DockStyle.Fill;
+            tblWord.Location = new Point(384, 183);
+            tblWord.Name = "tblWord";
+            tblWord.RowCount = 1;
+            tblWord.RowStyles.Add(new RowStyle(SizeType.Percent, 100F));
+            tblWord.Size = new Size(638, 84);
+            tblWord.TabIndex = 4;
             // 
             // lbl1
             // 
@@ -760,7 +760,7 @@
             tblKeyboardTop.ResumeLayout(false);
             tblKeyboardMiddle.ResumeLayout(false);
             tblKeyboardBottom.ResumeLayout(false);
-            tableLayoutPanel2.ResumeLayout(false);
+            tblWord.ResumeLayout(false);
             ResumeLayout(false);
         }
 
@@ -801,7 +801,7 @@
         private Button btnM;
         private Button btnIGiveUp;
         private PictureBox pbxHangman;
-        private TableLayoutPanel tableLayoutPanel2;
+        private TableLayoutPanel tblWord;
         private Label lbl1;
         private Label lbl2;
         private Label lbl3;

@@ -1,0 +1,72 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="HangmanMAUI.Hangman"
+             Title="Hangman">
+    
+    <ContentPage.Resources>
+        <ResourceDictionary>
+            <Style TargetType="Label">
+                <Setter Property="BackgroundColor" Value="#1996C0"/>
+            </Style>
+            
+            <Style TargetType="Button">
+                <Setter Property="BackgroundColor" Value="#1996C0"/>
+                <Setter Property="FontSize" Value="Large"/>
+            </Style>
+        </ResourceDictionary>
+    </ContentPage.Resources>
+    
+    <Grid x:Name="gMain" ColumnDefinitions="*, 1.5*" RowDefinitions="*,*,1.4*,*,*,*,*,*">
+        <Label x:Name="lblStatus" Grid.Column="1" Grid.Row="0" BackgroundColor="#FF7F27" Margin="15" />
+        <Image x:Name="imgHangman" Source="h0mistake.gif" Grid.RowSpan="5"/>
+
+        <Grid x:Name="gWord" ColumnDefinitions="*,*,*,*,*,*,*,*,*" RowDefinitions="*" Grid.Column="1" Grid.Row="2" >
+            <Label x:Name="lbl1" Grid.Column="1"/>
+            <Label x:Name="lbl2" Grid.Column="2"/>
+            <Label x:Name="lbl3" Grid.Column="3"/>
+            <Label x:Name="lbl4" Grid.Column="4"/>
+            <Label x:Name="lbl5" Grid.Column="5"/>
+            <Label x:Name="lbl6" Grid.Column="6"/>
+            <Label x:Name="lbl7" Grid.Column="7"/>
+        </Grid>
+
+        <Grid x:Name="gKeyboardTop" ColumnDefinitions="*,*,*,*,*,*,*,*,*,*,*" RowDefinitions="*" Grid.Column="1" Grid.Row="4">
+            <Button x:Name="lblQ" Text="Q" Grid.Column="0" Grid.Row="0"/>
+            <Button x:Name="lblW" Text="W" Grid.Column="1" Grid.Row="0"/>
+            <Button x:Name="lblE" Text="E" Grid.Column="2" Grid.Row="0"/>
+            <Button x:Name="lblR" Text="R" Grid.Column="3" Grid.Row="0"/>
+            <Button x:Name="lblT" Text="T" Grid.Column="4" Grid.Row="0"/>
+            <Button x:Name="lblY" Text="Y" Grid.Column="5" Grid.Row="0"/>
+            <Button x:Name="lblU" Text="U" Grid.Column="6" Grid.Row="0"/>
+            <Button x:Name="lblI" Text="I" Grid.Column="7" Grid.Row="0"/>
+            <Button x:Name="lblO" Text="O" Grid.Column="8" Grid.Row="0"/>
+            <Button x:Name="lblP" Text="P" Grid.Column="9" Grid.Row="0"/>
+        </Grid>
+
+        <Grid x:Name="gKeyboardMiddle" ColumnDefinitions=".5*,*,*,*,*,*,*,*,*,*,1.5*" RowDefinitions="*" Grid.Column="1" Grid.Row="5">
+            <Button x:Name="lblA" Text="A" Grid.Column="1" Grid.Row="0"/>
+            <Button x:Name="lblS" Text="S" Grid.Column="2" Grid.Row="0"/>
+            <Button x:Name="lblD" Text="D" Grid.Column="3" Grid.Row="0"/>
+            <Button x:Name="lblF" Text="F" Grid.Column="4" Grid.Row="0"/>
+            <Button x:Name="lblG" Text="G" Grid.Column="5" Grid.Row="0"/>
+            <Button x:Name="lblH" Text="H" Grid.Column="6" Grid.Row="0"/>
+            <Button x:Name="lblJ" Text="J" Grid.Column="7" Grid.Row="0"/>
+            <Button x:Name="lblK" Text="K" Grid.Column="8" Grid.Row="0"/>
+            <Button x:Name="lblL" Text="L" Grid.Column="9" Grid.Row="0"/>
+        </Grid>
+
+        <Grid x:Name="gKeyboardBottom" ColumnDefinitions="5.2*,3*,*,*,*,*,*,*,*,2.3*,.4*" RowDefinitions="*" Grid.Column="0" Grid.Row="6" Grid.ColumnSpan="2">
+            <Button x:Name="lblPickAWord" Text="Pick a Word" Grid.Column="1" Grid.Row="0" BackgroundColor="#FF7F27"/>
+            <Button x:Name="lblZ" Text="Z" Grid.Column="2" Grid.Row="0"/>
+            <Button x:Name="lblX" Text="X" Grid.Column="3" Grid.Row="0"/>
+            <Button x:Name="lblC" Text="C" Grid.Column="4" Grid.Row="0"/>
+            <Button x:Name="lblV" Text="V" Grid.Column="5" Grid.Row="0"/>
+            <Button x:Name="lblB" Text="B" Grid.Column="6" Grid.Row="0"/>
+            <Button x:Name="lblN" Text="N" Grid.Column="7" Grid.Row="0"/>
+            <Button x:Name="lblM" Text="M" Grid.Column="8" Grid.Row="0"/>
+            <Button x:Name="lblIGiveUp" Text="I Give Up" Grid.Column="9" Grid.Row="0" BackgroundColor="#FF7F27"/>
+        </Grid>
+
+    </Grid>
+</ContentPage>
