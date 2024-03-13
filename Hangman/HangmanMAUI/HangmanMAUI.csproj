@@ -64,6 +64,10 @@
 	</ItemGroup>
 
 	<ItemGroup>
+	  <ProjectReference Include="..\HangmanSystem\HangmanSystem.csproj" />
+	</ItemGroup>
+
+	<ItemGroup>
 	  <MauiXaml Update="Hangman.xaml">
 	    <Generator>MSBuild:Compile</Generator>
 	  </MauiXaml>

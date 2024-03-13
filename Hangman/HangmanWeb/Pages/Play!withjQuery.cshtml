@@ -1,0 +1,61 @@
+﻿@page
+@model HangmanWeb.Pages.Play_withjQueryModel
+@{
+}
+<div class="container ">
+    <div class="row">
+        <label class="alert alert-dismissible alert-warning fs-lg-3 text-center ps-5 pe-5" id="msg">
+
+        </label>
+    </div>
+    <div class="row mb-4">
+        <img id="image" src="" class="img-fluid col-4" style="max-width:600px" alt="" />
+        <div class="noselect bg-primary col-1 mt-5 ms-1 square letterbox text-primary text-center fs-1 pt-4 text-uppercase"> </div>
+        <div class="noselect bg-primary col-1 mt-5 ms-1 square letterbox text-primary text-center fs-1 pt-4 text-uppercase"> </div>
+        <div class="noselect bg-primary col-1 mt-5 ms-1 square letterbox text-primary text-center fs-1 pt-4 text-uppercase"> </div>
+        <div class="noselect bg-primary col-1 mt-5 ms-1 square letterbox text-primary text-center fs-1 pt-4 text-uppercase"> </div>
+        <div class="noselect bg-primary col-1 mt-5 ms-1 square letterbox text-primary text-center fs-1 pt-4 text-uppercase"> </div>
+        <div class="noselect bg-primary col-1 mt-5 ms-1 square letterbox text-primary text-center fs-1 pt-4 text-uppercase"> </div>
+        <div class="noselect bg-primary col-1 mt-5 ms-1 square letterbox text-primary text-center fs-1 pt-4 text-uppercase"> </div>
+    </div>
+    <div class="row justify-content-center">
+        <button class="noselect letterbutton col-1 m-1 btn btn-primary btn btn-square" disabled>q</button>
+        <button class="noselect letterbutton col-1 m-1 btn btn-primary btn btn-square" disabled>w</button>
+        <button class="noselect letterbutton col-1 m-1 btn btn-primary btn btn-square" disabled>e</button>
+        <button class="noselect letterbutton col-1 m-1 btn btn-primary btn btn-square" disabled>r</button>
+        <button class="noselect letterbutton col-1 m-1 btn btn-primary btn btn-square" disabled>t</button>
+        <button class="noselect letterbutton col-1 m-1 btn btn-primary btn btn-square" disabled>y</button>
+        <button class="noselect letterbutton col-1 m-1 btn btn-primary btn btn-square" disabled>u</button>
+        <button class="noselect letterbutton col-1 m-1 btn btn-primary btn btn-square" disabled>i</button>
+        <button class="noselect letterbutton col-1 m-1 btn btn-primary btn btn-square" disabled>o</button>
+        <button class="noselect letterbutton col-1 m-1 btn btn-primary btn btn-square" disabled>p</button>
+    </div>
+    <div class="row row justify-content-center">
+        <button class="noselect letterbutton col-1 m-1 btn btn-primary btn btn-square" disabled>a</button>
+        <button class="noselect letterbutton col-1 m-1 btn btn-primary btn btn-square" disabled>s</button>
+        <button class="noselect letterbutton col-1 m-1 btn btn-primary btn btn-square" disabled>d</button>
+        <button class="noselect letterbutton col-1 m-1 btn btn-primary btn btn-square" disabled>f</button>
+        <button class="noselect letterbutton col-1 m-1 btn btn-primary btn btn-square" disabled>g</button>
+        <button class="noselect letterbutton col-1 m-1 btn btn-primary btn btn-square" disabled>h</button>
+        <button class="noselect letterbutton col-1 m-1 btn btn-primary btn btn-square" disabled>j</button>
+        <button class="noselect letterbutton col-1 m-1 btn btn-primary btn btn-square" disabled>k</button>
+        <button class="noselect letterbutton col-1 m-1 btn btn-primary btn btn-square" disabled>l</button>
+    </div>
+    <div class="row row justify-content-center">
+        <button id="pickAWord" class="col-2 m-1 btn btn-warning">Pick a Word</button>
+        <button class="letterbutton col-1 m-1 btn btn-primary btn btn-square" disabled>z</button>
+        <button class="letterbutton col-1 m-1 btn btn-primary btn btn-square" disabled>x</button>
+        <button class="letterbutton col-1 m-1 btn btn-primary btn btn-square" disabled>c</button>
+        <button class="letterbutton col-1 m-1 btn btn-primary btn btn-square" disabled>v</button>
+        <button class="letterbutton col-1 m-1 btn btn-primary btn btn-square" disabled>b</button>
+        <button class="letterbutton col-1 m-1 btn btn-primary btn btn-square" disabled>n</button>
+        <button class="letterbutton col-1 m-1 btn btn-primary btn btn-square" disabled>m</button>
+        <button id="iGiveUp" class="col-2 m-1 btn btn-warning" disabled>I Give Up</button>
+
+    </div>
+</div>
+@section Scripts{
+    <script type="module" src="~/js/Play!withjQuery.js" asp-append-version="true">
+      
+    </script>
+}

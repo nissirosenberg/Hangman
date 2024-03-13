@@ -5,7 +5,13 @@ VisualStudioVersion = 17.6.33801.468
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Hangman", "Hangman\Hangman.csproj", "{507ABCD4-55B2-4C35-886F-EF767367F844}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "HangmanMAUI", "HangmanMAUI\HangmanMAUI.csproj", "{78FEF21A-DCA9-4C2C-9B06-D8E6C466DBD6}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "HangmanMAUI", "HangmanMAUI\HangmanMAUI.csproj", "{78FEF21A-DCA9-4C2C-9B06-D8E6C466DBD6}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "HangmanSystem", "HangmanSystem\HangmanSystem.csproj", "{BCE5D2A5-5F52-4FF8-9F30-90079862666E}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "HangmanTest", "HangmanTest\HangmanTest.csproj", "{AB353B1F-2E98-4A5F-8C5A-36A1CF19AA67}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "HangmanWeb", "HangmanWeb\HangmanWeb.csproj", "{A81D637D-CD12-477A-B6F5-208E3B080419}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -23,6 +29,18 @@ Global
 		{78FEF21A-DCA9-4C2C-9B06-D8E6C466DBD6}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{78FEF21A-DCA9-4C2C-9B06-D8E6C466DBD6}.Release|Any CPU.Build.0 = Release|Any CPU
 		{78FEF21A-DCA9-4C2C-9B06-D8E6C466DBD6}.Release|Any CPU.Deploy.0 = Release|Any CPU
+		{BCE5D2A5-5F52-4FF8-9F30-90079862666E}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{BCE5D2A5-5F52-4FF8-9F30-90079862666E}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{BCE5D2A5-5F52-4FF8-9F30-90079862666E}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{BCE5D2A5-5F52-4FF8-9F30-90079862666E}.Release|Any CPU.Build.0 = Release|Any CPU
+		{AB353B1F-2E98-4A5F-8C5A-36A1CF19AA67}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{AB353B1F-2E98-4A5F-8C5A-36A1CF19AA67}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{AB353B1F-2E98-4A5F-8C5A-36A1CF19AA67}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{AB353B1F-2E98-4A5F-8C5A-36A1CF19AA67}.Release|Any CPU.Build.0 = Release|Any CPU
+		{A81D637D-CD12-477A-B6F5-208E3B080419}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{A81D637D-CD12-477A-B6F5-208E3B080419}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{A81D637D-CD12-477A-B6F5-208E3B080419}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{A81D637D-CD12-477A-B6F5-208E3B080419}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

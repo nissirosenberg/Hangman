@@ -3,70 +3,74 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              x:Class="HangmanMAUI.Hangman"
              Title="Hangman">
-    
+
     <ContentPage.Resources>
         <ResourceDictionary>
-            <Style TargetType="Label">
-                <Setter Property="BackgroundColor" Value="#1996C0"/>
-            </Style>
-            
+
             <Style TargetType="Button">
-                <Setter Property="BackgroundColor" Value="#1996C0"/>
-                <Setter Property="FontSize" Value="Large"/>
+                <Setter Property="FontSize" Value="25"/>
             </Style>
         </ResourceDictionary>
     </ContentPage.Resources>
-    
-    <Grid x:Name="gMain" ColumnDefinitions="*, 1.5*" RowDefinitions="*,*,1.4*,*,*,*,*,*">
-        <Label x:Name="lblStatus" Grid.Column="1" Grid.Row="0" BackgroundColor="#FF7F27" Margin="15" />
-        <Image x:Name="imgHangman" Source="h0mistake.gif" Grid.RowSpan="5"/>
+
+    <Grid x:Name="gMain" ColumnDefinitions="*, 1.2*" RowDefinitions="*,*,1.4*,*,*,*,*,*, .4*,.4*">
+        <Label x:Name="StatusLbl" Grid.Column="1" Grid.Row="0" BackgroundColor="{StaticResource Secondary}" Margin="15" Text="{Binding MessageDisplay}" FontSize="25" HorizontalTextAlignment="Center"/>
+        <Image x:Name="HangmanImg" Source="{Binding CurrentPicture, StringFormat='h{0}mistake.gif'}" Grid.RowSpan="5"/>
 
         <Grid x:Name="gWord" ColumnDefinitions="*,*,*,*,*,*,*,*,*" RowDefinitions="*" Grid.Column="1" Grid.Row="2" >
-            <Label x:Name="lbl1" Grid.Column="1"/>
-            <Label x:Name="lbl2" Grid.Column="2"/>
-            <Label x:Name="lbl3" Grid.Column="3"/>
-            <Label x:Name="lbl4" Grid.Column="4"/>
-            <Label x:Name="lbl5" Grid.Column="5"/> 
-            <Label x:Name="lbl6" Grid.Column="6"/>
-            <Label x:Name="lbl7" Grid.Column="7"/>
+            <Label x:Name="Label1" Grid.Column="1" BindingContext="{Binding LetterBoxes[0]}" Text="{Binding LetterBoxValue}" TextColor="{Binding TextColorMaui}"/>
+            <Label x:Name="Label2" Grid.Column="2" BindingContext="{Binding LetterBoxes[1]}" Text="{Binding LetterBoxValue}" TextColor="{Binding TextColorMaui}"/>
+            <Label x:Name="Label3" Grid.Column="3" BindingContext="{Binding LetterBoxes[2]}" Text="{Binding LetterBoxValue}" TextColor="{Binding TextColorMaui}"/>
+            <Label x:Name="Label4" Grid.Column="4" BindingContext="{Binding LetterBoxes[3]}" Text="{Binding LetterBoxValue}" TextColor="{Binding TextColorMaui}"/>
+            <Label x:Name="Label5" Grid.Column="5" BindingContext="{Binding LetterBoxes[4]}" Text="{Binding LetterBoxValue}" TextColor="{Binding TextColorMaui}"/> 
+            <Label x:Name="Label6" Grid.Column="6" BindingContext="{Binding LetterBoxes[5]}" Text="{Binding LetterBoxValue}" TextColor="{Binding TextColorMaui}"/>
+            <Label x:Name="Label7" Grid.Column="7" BindingContext="{Binding LetterBoxes[6]}" Text="{Binding LetterBoxValue}" TextColor="{Binding TextColorMaui}"/>
         </Grid>
 
         <Grid x:Name="gKeyboardTop" ColumnDefinitions="*,*,*,*,*,*,*,*,*,*,*" RowDefinitions="*" Grid.Column="1" Grid.Row="4">
-            <Button x:Name="lblQ" Text="Q" Grid.Column="0" Grid.Row="0"/>
-            <Button x:Name="lblW" Text="W" Grid.Column="1" Grid.Row="0"/>
-            <Button x:Name="lblE" Text="E" Grid.Column="2" Grid.Row="0"/>
-            <Button x:Name="lblR" Text="R" Grid.Column="3" Grid.Row="0"/>
-            <Button x:Name="lblT" Text="T" Grid.Column="4" Grid.Row="0"/>
-            <Button x:Name="lblY" Text="Y" Grid.Column="5" Grid.Row="0"/>
-            <Button x:Name="lblU" Text="U" Grid.Column="6" Grid.Row="0"/>
-            <Button x:Name="lblI" Text="I" Grid.Column="7" Grid.Row="0"/>
-            <Button x:Name="lblO" Text="O" Grid.Column="8" Grid.Row="0"/>
-            <Button x:Name="lblP" Text="P" Grid.Column="9" Grid.Row="0"/>
+            <Button x:Name="QBtn" Text="Q" Grid.Column="0" Grid.Row="0" Clicked="Btn_Clicked" BackgroundColor="{Binding ButtonColorMaui}" IsEnabled="{Binding ButtonEnabled}"/>
+            <Button x:Name="WBtn" Text="W" Grid.Column="1" Grid.Row="0" Clicked="Btn_Clicked" BackgroundColor="{Binding ButtonColorMaui}" IsEnabled="{Binding ButtonEnabled}"/>
+            <Button x:Name="EBtn" Text="E" Grid.Column="2" Grid.Row="0" Clicked="Btn_Clicked" BackgroundColor="{Binding ButtonColorMaui}" IsEnabled="{Binding ButtonEnabled}"/>
+            <Button x:Name="RBtn" Text="R" Grid.Column="3" Grid.Row="0" Clicked="Btn_Clicked" BackgroundColor="{Binding ButtonColorMaui}" IsEnabled="{Binding ButtonEnabled}"/>
+            <Button x:Name="TBtn" Text="T" Grid.Column="4" Grid.Row="0" Clicked="Btn_Clicked" BackgroundColor="{Binding ButtonColorMaui}" IsEnabled="{Binding ButtonEnabled}"/>
+            <Button x:Name="YBtn" Text="Y" Grid.Column="5" Grid.Row="0" Clicked="Btn_Clicked" BackgroundColor="{Binding ButtonColorMaui}" IsEnabled="{Binding ButtonEnabled}"/>
+            <Button x:Name="UBtn" Text="U" Grid.Column="6" Grid.Row="0" Clicked="Btn_Clicked" BackgroundColor="{Binding ButtonColorMaui}" IsEnabled="{Binding ButtonEnabled}"/>
+            <Button x:Name="IBtn" Text="I" Grid.Column="7" Grid.Row="0" Clicked="Btn_Clicked" BackgroundColor="{Binding ButtonColorMaui}" IsEnabled="{Binding ButtonEnabled}"/>
+            <Button x:Name="OBtn" Text="O" Grid.Column="8" Grid.Row="0" Clicked="Btn_Clicked" BackgroundColor="{Binding ButtonColorMaui}" IsEnabled="{Binding ButtonEnabled}"/>
+            <Button x:Name="PBtn" Text="P" Grid.Column="9" Grid.Row="0" Clicked="Btn_Clicked" BackgroundColor="{Binding ButtonColorMaui}" IsEnabled="{Binding ButtonEnabled}"/>
         </Grid>
 
         <Grid x:Name="gKeyboardMiddle" ColumnDefinitions=".5*,*,*,*,*,*,*,*,*,*,1.5*" RowDefinitions="*" Grid.Column="1" Grid.Row="5">
-            <Button x:Name="lblA" Text="A" Grid.Column="1" Grid.Row="0"/>
-            <Button x:Name="lblS" Text="S" Grid.Column="2" Grid.Row="0"/>
-            <Button x:Name="lblD" Text="D" Grid.Column="3" Grid.Row="0"/>
-            <Button x:Name="lblF" Text="F" Grid.Column="4" Grid.Row="0"/>
-            <Button x:Name="lblG" Text="G" Grid.Column="5" Grid.Row="0"/>
-            <Button x:Name="lblH" Text="H" Grid.Column="6" Grid.Row="0"/>
-            <Button x:Name="lblJ" Text="J" Grid.Column="7" Grid.Row="0"/>
-            <Button x:Name="lblK" Text="K" Grid.Column="8" Grid.Row="0"/>
-            <Button x:Name="lblL" Text="L" Grid.Column="9" Grid.Row="0"/>
+            <Button x:Name="ABtn" Text="A" Grid.Column="1" Grid.Row="0" Clicked="Btn_Clicked" BackgroundColor="{Binding ButtonColorMaui}" IsEnabled="{Binding ButtonEnabled}"/>
+            <Button x:Name="SBtn" Text="S" Grid.Column="2" Grid.Row="0" Clicked="Btn_Clicked" BackgroundColor="{Binding ButtonColorMaui}" IsEnabled="{Binding ButtonEnabled}"/>
+            <Button x:Name="DBtn" Text="D" Grid.Column="3" Grid.Row="0" Clicked="Btn_Clicked" BackgroundColor="{Binding ButtonColorMaui}" IsEnabled="{Binding ButtonEnabled}"/>
+            <Button x:Name="FBtn" Text="F" Grid.Column="4" Grid.Row="0" Clicked="Btn_Clicked" BackgroundColor="{Binding ButtonColorMaui}" IsEnabled="{Binding ButtonEnabled}"/>
+            <Button x:Name="GBtn" Text="G" Grid.Column="5" Grid.Row="0" Clicked="Btn_Clicked" BackgroundColor="{Binding ButtonColorMaui}" IsEnabled="{Binding ButtonEnabled}"/>
+            <Button x:Name="HBtn" Text="H" Grid.Column="6" Grid.Row="0" Clicked="Btn_Clicked" BackgroundColor="{Binding ButtonColorMaui}" IsEnabled="{Binding ButtonEnabled}"/>
+            <Button x:Name="JBtn" Text="J" Grid.Column="7" Grid.Row="0" Clicked="Btn_Clicked" BackgroundColor="{Binding ButtonColorMaui}" IsEnabled="{Binding ButtonEnabled}"/>
+            <Button x:Name="KBtn" Text="K" Grid.Column="8" Grid.Row="0" Clicked="Btn_Clicked" BackgroundColor="{Binding ButtonColorMaui}" IsEnabled="{Binding ButtonEnabled}"/>
+            <Button x:Name="LBtn" Text="L" Grid.Column="9" Grid.Row="0" Clicked="Btn_Clicked" BackgroundColor="{Binding ButtonColorMaui}" IsEnabled="{Binding ButtonEnabled}"/>
         </Grid>
 
-        <Grid x:Name="gKeyboardBottom" ColumnDefinitions="5.2*,3*,*,*,*,*,*,*,*,2.3*,.4*" RowDefinitions="*" Grid.Column="0" Grid.Row="6" Grid.ColumnSpan="2">
-            <Button x:Name="lblPickAWord" Text="Pick a Word" Grid.Column="1" Grid.Row="0" BackgroundColor="#FF7F27"/>
-            <Button x:Name="lblZ" Text="Z" Grid.Column="2" Grid.Row="0"/>
-            <Button x:Name="lblX" Text="X" Grid.Column="3" Grid.Row="0"/>
-            <Button x:Name="lblC" Text="C" Grid.Column="4" Grid.Row="0"/>
-            <Button x:Name="lblV" Text="V" Grid.Column="5" Grid.Row="0"/>
-            <Button x:Name="lblB" Text="B" Grid.Column="6" Grid.Row="0"/>
-            <Button x:Name="lblN" Text="N" Grid.Column="7" Grid.Row="0"/>
-            <Button x:Name="lblM" Text="M" Grid.Column="8" Grid.Row="0"/>
-            <Button x:Name="lblIGiveUp" Text="I Give Up" Grid.Column="9" Grid.Row="0" BackgroundColor="#FF7F27"/>
+        <Grid x:Name="gKeyboardBottom" ColumnDefinitions="6.5*,3*,*,*,*,*,*,*,*,2.3*,.4*" RowDefinitions="*" Grid.Column="0" Grid.Row="6" Grid.ColumnSpan="2">
+            <Button x:Name="PickAWordBtn" Text="Pick a Word" Grid.Column="1" Grid.Row="0" BackgroundColor="{StaticResource Secondary}" IsEnabled="{Binding PickAWordButtonEnabled}" Clicked="PickAWordBtn_Clicked"/>
+            <Button x:Name="ZBtn" Text="Z" Grid.Column="2" Grid.Row="0" Clicked="Btn_Clicked" BackgroundColor="{Binding ButtonColorMaui}" IsEnabled="{Binding ButtonEnabled}" />
+            <Button x:Name="XBtn" Text="X" Grid.Column="3" Grid.Row="0" Clicked="Btn_Clicked" BackgroundColor="{Binding ButtonColorMaui}" IsEnabled="{Binding ButtonEnabled}"/>
+            <Button x:Name="CBtn" Text="C" Grid.Column="4" Grid.Row="0" Clicked="Btn_Clicked" BackgroundColor="{Binding ButtonColorMaui}" IsEnabled="{Binding ButtonEnabled}"/>
+            <Button x:Name="VBtn" Text="V" Grid.Column="5" Grid.Row="0" Clicked="Btn_Clicked" BackgroundColor="{Binding ButtonColorMaui}" IsEnabled="{Binding ButtonEnabled}"/>
+            <Button x:Name="BBtn" Text="B" Grid.Column="6" Grid.Row="0" Clicked="Btn_Clicked" BackgroundColor="{Binding ButtonColorMaui}" IsEnabled="{Binding ButtonEnabled}"/>
+            <Button x:Name="NBtn" Text="N" Grid.Column="7" Grid.Row="0" Clicked="Btn_Clicked" BackgroundColor="{Binding ButtonColorMaui}" IsEnabled="{Binding ButtonEnabled}"/>
+            <Button x:Name="MBtn" Text="M" Grid.Column="8" Grid.Row="0" Clicked="Btn_Clicked" BackgroundColor="{Binding ButtonColorMaui}" IsEnabled="{Binding ButtonEnabled}"/>
+            <Button x:Name="IGiveUpBtn" Text="I Give Up" Grid.Column="9" Grid.Row="0" BackgroundColor="{StaticResource Secondary}" IsEnabled="{Binding IGiveUpButtonEnabled}" Clicked="IGiveUpBtn_Clicked"/>
         </Grid>
+        <Label x:Name="GameStatusLbl" Grid.Column="0" Grid.Row="7" Text="{Binding AllGamesStatus}" Grid.ColumnSpan="2" FontSize="25" MinimumWidthRequest="750" HorizontalOptions="Center" Margin="5"/>
+        <HorizontalStackLayout Grid.Row="8" Grid.ColumnSpan="2" HorizontalOptions="Center" Spacing="100" >
+            <RadioButton x:Name="Game1Rb" Content="{Binding GameName}" CheckedChanged="Game_CheckedChanged" IsChecked="True"/>
+            <RadioButton x:Name="Game2Rb" Content="{Binding GameName}" CheckedChanged="Game_CheckedChanged"/>
+            <RadioButton x:Name="Game3Rb" Content="{Binding GameName}" CheckedChanged="Game_CheckedChanged"/>
+        </HorizontalStackLayout>
+
+
 
     </Grid>
 </ContentPage>
