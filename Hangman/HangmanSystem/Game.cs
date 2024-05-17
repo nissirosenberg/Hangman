@@ -19,12 +19,12 @@ namespace HangmanSystem
 
         Random rnd = new();
 
-        //string ss;
-
         GameStatusEnum _gamestatus = GameStatusEnum.PreGame;
         bool _igiveupbuttonenabled;
         bool _pickawordbuttonenabled = true;
         int _currentpicture = -1;
+        string _windowspicturepath = "";
+        string _allgamestatus = "";
 
         public string mysteryword;
         string mysteryletter1;
@@ -34,7 +34,6 @@ namespace HangmanSystem
         string mysteryletter5;
         string mysteryletter6;
         string mysteryletter7;
-
 
 
         public Game()
@@ -50,25 +49,27 @@ namespace HangmanSystem
                 this.LetterBoxes.Add(new LetterBox());
             }
             ChangePicture();
-            this.LetterButtons.ForEach(b => b.ButtonEnabled = false);
+            //this.LetterButtons.ForEach(b => b.ButtonEnabled = false);
 
             lstspecialcharacters = new() { "1", "2", "3", "4", "5", "6", "7", "8", "9", "0", " ", "!", "@", "#", "$", "%", "^", "&", "*", "(", ")", "-", "\\", "/", ":", "-" };
             lstword = lstword.Where(w => w.Value.Trim().Length == 7).ToList();
 
-            //ss = JsonConvert.SerializeObject(lstword);
-
-            //DownloadFile();
-
-
             lstword = lstword.Where(w => !w.Value.Contains(lstspecialcharacters.ToString())).ToList();
             this.LetterButtons.ForEach(b => b.ButtonColor = this.BlueGameColor);
-            this.LetterButtons.ForEach(b => b.ButtonColorMaui = this.BlueGameColorMaui);
+            //this.LetterButtons.ForEach(b => b.ButtonColorMaui = this.BlueGameColorMaui);
         }
         private static int numgames = 0;
         private static int totalgamesplayed = 0;
         private static int totalgameswon = 0;
         public string GameName { get; private set; }
-        public static string AllGamesStatus { get => $"Total Wins: {totalgameswon} out of {totalgamesplayed} games"; }
+        public string AllGamesStatus
+        {
+            get => $"Total Wins: {totalgameswon} out of {totalgamesplayed} games"; set
+            {
+                _allgamestatus = value;
+                InvokePropertyChanged();
+            }
+        }
 
         public GameStatusEnum GameStatus
         {
@@ -89,32 +90,35 @@ namespace HangmanSystem
                 InvokePropertyChanged();
             }
         }
-        public void  DownloadFile()
-        {
-            //File f = new();
-
-           // return File(new System.Text.UTF8Encoding().GetBytes(ss), "text/json", "ttt");
-        }
 
         public string PicturePath { get => @"\Images\" + CurrentPicture.ToString() + "Mistake.gif"; }
+        public string WindowsPicturePath
+        {
+            get => _windowspicturepath + PicturePath;
+            set
+            {
+                _windowspicturepath = value;
+                InvokePropertyChanged();
+            }
+        }
         public string MessageDisplay { get => ChooseDisplayMessage(); }
         public System.Drawing.Color TextColorGuessed { get; set; } = System.Drawing.Color.Black;
 
-        public Microsoft.Maui.Graphics.Color TextColorGuessedMaui
-        {
-            get => this.ConvertToMauiColor(this.TextColorGuessed);
-        }
+        //public Microsoft.Maui.Graphics.Color TextColorGuessedMaui
+        //{
+        //    get => this.ConvertToMauiColor(this.TextColorGuessed);
+        //}
         public System.Drawing.Color ButtonDisabledColor { get; set; } = System.Drawing.Color.Gray;
-        public Microsoft.Maui.Graphics.Color ButtonDisabledColorMaui
-        {
-            get => this.ConvertToMauiColor(this.ButtonDisabledColor);
-        }
+        //public Microsoft.Maui.Graphics.Color ButtonDisabledColorMaui
+        //{
+        //    get => this.ConvertToMauiColor(this.ButtonDisabledColor);
+        //}
         public Color BlueGameColor { get; set; } = Color.FromArgb(25, 150, 192);
 
-        public Microsoft.Maui.Graphics.Color BlueGameColorMaui
-        {
-            get => this.ConvertToMauiColor(this.BlueGameColor);
-        }
+        //public Microsoft.Maui.Graphics.Color BlueGameColorMaui
+        //{
+        //    get => this.ConvertToMauiColor(this.BlueGameColor);
+        //}
         public bool IGiveUpButtonEnabled
         {
             get => _igiveupbuttonenabled; set
@@ -134,7 +138,7 @@ namespace HangmanSystem
         }
 
         public void StartGame()
-            
+
         {
             CurrentPicture = -1;
             ChangePicture();
@@ -168,8 +172,9 @@ namespace HangmanSystem
 
         }
 
-        public void GuessALetter(string triedletter, int buttonvalue)
+        public void GuessALetter(string triedletter, int buttonvalue, string windowspath = "")
         {
+            _windowspicturepath = windowspath;
             LetterButton letterbutton = this.LetterButtons[buttonvalue];
             this.LetterBoxes.Where(s => s.LetterBoxValue == triedletter).ToList().ForEach(s => s.TextColor = this.TextColorGuessed);
 
@@ -220,6 +225,7 @@ namespace HangmanSystem
             this.IGiveUpButtonEnabled = false;
             this.PickAWordButtonEnabled = true;
             this.LetterButtons.ForEach(b => b.ButtonEnabled = false);
+            totalgamesplayed++;
         }
         private void ChangePicture()
         {
@@ -256,15 +262,15 @@ namespace HangmanSystem
 
 
 
-        public Microsoft.Maui.Graphics.Color ConvertToMauiColor(System.Drawing.Color systemColor)
-        {
-            float red = systemColor.R / 255f;
-            float green = systemColor.G / 255f;
-            float blue = systemColor.B / 255f;
-            float alpha = systemColor.A / 255f;
+        //public Microsoft.Maui.Graphics.Color ConvertToMauiColor(System.Drawing.Color systemColor)
+        //{
+        //    float red = systemColor.R / 255f;
+        //    float green = systemColor.G / 255f;
+        //    float blue = systemColor.B / 255f;
+        //    float alpha = systemColor.A / 255f;
 
-            return new Microsoft.Maui.Graphics.Color(red, green, blue, alpha);
-        }
+        //    return new Microsoft.Maui.Graphics.Color(red, green, blue, alpha);
+        //}
 
         private void InvokePropertyChanged([CallerMemberName] string propertyname = "")
         {

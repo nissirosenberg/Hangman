@@ -83,8 +83,9 @@
             // pbxHangman
             // 
             pbxHangman.Dock = DockStyle.Fill;
+            pbxHangman.ErrorImage = null;
             pbxHangman.ImageLocation = "";
-            pbxHangman.InitialImage = null;
+            pbxHangman.InitialImage = (Image)resources.GetObject("pbxHangman.InitialImage");
             pbxHangman.Location = new Point(3, 3);
             pbxHangman.Name = "pbxHangman";
             tblMain.SetRowSpan(pbxHangman, 5);

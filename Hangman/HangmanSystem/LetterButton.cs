@@ -8,7 +8,8 @@ namespace HangmanSystem
         public event PropertyChangedEventHandler? PropertyChanged;
         System.Drawing.Color _buttoncolor;
         bool _buttonenabled = false;
-        public Microsoft.Maui.Graphics.Color _buttoncolormaui;
+        //public Microsoft.Maui.Graphics.Color _buttoncolormaui;
+        System.Drawing.Color _buttoncolormaui;
 
         public System.Drawing.Color ButtonColor
         {
@@ -20,16 +21,21 @@ namespace HangmanSystem
                 InvokePropertyChanged("ButtonColorMaui");
             }
         }
-
         public Microsoft.Maui.Graphics.Color ButtonColorMaui
         {
             get => this.ConvertToMauiColor(this.ButtonColor);
-            set
-            {
-                _buttoncolormaui = value;
-                InvokePropertyChanged();
-            }
         }
+
+
+        //public Microsoft.Maui.Graphics.Color ButtonColorMaui
+        //{
+        //    get => this.ConvertToMauiColor(this.ButtonColor);
+        //    set
+        //    {
+        //        _buttoncolormaui = value;
+        //        InvokePropertyChanged();
+        //    }
+        //}
 
         public Microsoft.Maui.Graphics.Color ConvertToMauiColor(System.Drawing.Color systemColor)
         {
@@ -42,8 +48,8 @@ namespace HangmanSystem
         }
         public bool ButtonEnabled
         {
-            get => _buttonenabled; set
-            {
+            get => _buttonenabled; 
+            set{
                 _buttonenabled = value;
                 InvokePropertyChanged();
             }

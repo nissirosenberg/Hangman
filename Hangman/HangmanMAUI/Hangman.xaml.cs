@@ -6,6 +6,7 @@ public partial class Hangman : ContentPage
     Game activegame;
     List<Game> lstgame = new() { new Game(), new Game(), new Game() };
     List<Button> lstletterbuttons = new();
+    
     public Hangman()
     {
         InitializeComponent();
@@ -26,7 +27,7 @@ public partial class Hangman : ContentPage
 
     private void G_AllGamesStatusChanged(object sender, EventArgs e)
     {
-        GameStatusLbl.Text = Game.AllGamesStatus;
+        GameStatusLbl.Text = activegame.AllGamesStatus;
     }
 
     private void Btn_Clicked(object sender, EventArgs e)

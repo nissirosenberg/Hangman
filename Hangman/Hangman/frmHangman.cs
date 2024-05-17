@@ -8,6 +8,7 @@ namespace Hangman
         Game game = new();
         List<Label> lstletterboxes = new();
         List<Button> lstletterbuttons = new();
+        List<Image> lstimages = new();
 
         public string path = Application.StartupPath + @"\";
 
@@ -34,22 +35,20 @@ namespace Hangman
                 b.DataBindings.Add("Text", letterbox, "LetterBoxValue");
                 b.DataBindings.Add("Forecolor", letterbox, "TextColor");
             });
-
-
-          //pbxHangman.DataBindings.Add("ImageLocation", game, $"{path}PicturePath");
-
-            //pbxHangman.ImageLocation = path + game.PicturePath;
+            pbxHangman.ImageLocation = path + @"\Images\" + "0Mistake.gif";
         }
 
         private void StartGame()
         {
             game.StartGame();
         }
-        
-        private void GuessALetter(string buttontext, Button btn)
+
+        private void GuessALetter(string buttontext, Button btn, string startuppath)
         {
             int num = lstletterbuttons.IndexOf(btn);
-            game.GuessALetter(buttontext, num);
+            game.GuessALetter(buttontext, num, startuppath);
+            pbxHangman.DataBindings.Clear();
+            pbxHangman.DataBindings.Add("ImageLocation", game, "WindowsPicturePath");
         }
 
         private void GiveUp()
@@ -72,7 +71,7 @@ namespace Hangman
             if (sender is Button)
             {
                 Button btn = (Button)sender;
-                GuessALetter(btn.Text, btn);
+                GuessALetter(btn.Text, btn, path);
             }
         }
 

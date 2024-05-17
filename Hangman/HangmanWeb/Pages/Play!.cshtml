@@ -101,9 +101,11 @@
     async function getWord(length) {
         let word;
         try {
-            
+            //let url = "https://random-word-api.vercel.app/api?words=1&length=7";
             let url = "https://random-word-api.herokuapp.com/word?";
             let params = new URLSearchParams();
+            //params.append("words", "1");
+           // params.append("alphabetize","true")
             params.append("length", length);
             let r = await fetch(url + params.toString(), requestOptions);
             let p = await r.json();
