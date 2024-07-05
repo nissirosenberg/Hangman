@@ -11,33 +11,58 @@ var Hangman;
 (function (Hangman) {
     //let e = await getWord(7);
     //console.log(e);
-    var myHeaders = new Headers();
-    myHeaders.append("Content-Type", "application/json");
-    var graphql = JSON.stringify({
-        query: "",
-        variables: {}
-    });
-    var requestOptions = {
+    //var myHeaders = new Headers();
+    //myHeaders.append("Content-Type", "application/json");
+    //var graphql = JSON.stringify({
+    //    query: "",
+    //    variables: {}
+    //})
+    //var requestOptions: any = {
+    //    method: 'GET',
+    //    headers: myHeaders,
+    //    /*body: graphql,*/
+    //    redirect: 'follow'
+    //};
+    //async function getWord(length: number) {
+    //    let word;
+    //    try {
+    //        let url = "https://random-word-api.herokuapp.com/word?";
+    //        let params = new URLSearchParams();
+    //        params.append("length", length.toString());
+    //        let r = await fetch(url + params.toString(), requestOptions);
+    //        let p = await r.json();
+    //        word = p[0];
+    //    }
+    //    catch (e) {
+    //        console.log(e.message);
+    //    }
+    //    return word;
+    //}
+    //let f = await getWords(50, 7);
+    //console.log(f);
+    const options = {
         method: 'GET',
-        headers: myHeaders,
-        //body: graphql,
-        redirect: 'follow'
+        headers: {
+            'x-rapidapi-key': '65e7f85401mshad1a54cb18a19aep1d6b59jsn8e2a3e1e43ff',
+            'x-rapidapi-host': 'word-generator2.p.rapidapi.com'
+        }
     };
-    function getWord(length) {
+    function getWords(count, length) {
         return __awaiter(this, void 0, void 0, function* () {
-            let word;
+            let wordlist;
             try {
-                let url = "https://random-word-api.herokuapp.com/word?";
+                let url = 'https://word-generator2.p.rapidapi.com/?';
                 let params = new URLSearchParams();
+                params.append("count", count.toString());
                 params.append("length", length.toString());
-                let r = yield fetch(url + params.toString(), requestOptions);
-                let p = yield r.json();
-                word = p[0];
+                let response = yield fetch(url + params.toString(), options);
+                let result = yield response.json();
+                wordlist = result.body;
             }
-            catch (e) {
-                console.log(e.message);
+            catch (error) {
+                console.log(error.message);
             }
-            return word;
+            return wordlist;
         });
     }
     const notStarted = "Click Pick a Word to start the game!";
@@ -62,17 +87,22 @@ var Hangman;
     let letter5;
     let letter6;
     let letter7;
+    let f;
     $(document).ready(function () {
-        msg = document.querySelector("#msg");
-        letterboxes = [...document.querySelectorAll(".letterbox")];
-        letterbuttons = [...$(".letterbutton")];
-        iGiveUpButton = document.querySelector("#iGiveUp");
-        pickAWordButton = document.querySelector("#pickAWord");
-        $(pickAWordButton).click(startGame);
-        $(iGiveUpButton).click(iGiveUp);
-        $(letterbuttons).click(guessALetter);
-        displayMessage();
-        changePicture();
+        return __awaiter(this, void 0, void 0, function* () {
+            msg = document.querySelector("#msg");
+            letterboxes = [...document.querySelectorAll(".letterbox")];
+            letterbuttons = [...$(".letterbutton")];
+            iGiveUpButton = document.querySelector("#iGiveUp");
+            pickAWordButton = document.querySelector("#pickAWord");
+            $(pickAWordButton).click(startGame);
+            $(iGiveUpButton).click(iGiveUp);
+            $(letterbuttons).click(guessALetter);
+            displayMessage();
+            changePicture();
+            f = yield getWords(50, 7);
+            console.log(f);
+        });
     });
     function startGame() {
         return __awaiter(this, void 0, void 0, function* () {
@@ -82,7 +112,12 @@ var Hangman;
             gameStatus = justStarted;
             displayMessage();
             //async ()=> word = await getWord(7).toString();
-            word = yield getWord(7); // "parties";//e;
+            //let f = await getWords(50, 7);
+            //console.log(f);
+            //word = await getWord(7);// "parties";//e;
+            let random = (Math.floor(Math.random() * 50));
+            word = f[random];
+            console.log(random);
             letter1 = word.substring(0, 1);
             letter2 = word.substring(1, 2);
             letter3 = word.substring(2, 3);

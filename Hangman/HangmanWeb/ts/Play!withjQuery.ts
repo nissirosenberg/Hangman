@@ -2,34 +2,65 @@
     //let e = await getWord(7);
     //console.log(e);
 
-    var myHeaders = new Headers();
-    myHeaders.append("Content-Type", "application/json");
+    //var myHeaders = new Headers();
+    //myHeaders.append("Content-Type", "application/json");
 
-    var graphql = JSON.stringify({
-        query: "",
-        variables: {}
-    })
-    var requestOptions: any = {
+    //var graphql = JSON.stringify({
+    //    query: "",
+    //    variables: {}
+    //})
+    //var requestOptions: any = {
+    //    method: 'GET',
+    //    headers: myHeaders,
+    //    /*body: graphql,*/
+    //    redirect: 'follow'
+    //};
+    //async function getWord(length: number) {
+    //    let word;
+    //    try {
+    //        let url = "https://random-word-api.herokuapp.com/word?";
+    //        let params = new URLSearchParams();
+    //        params.append("length", length.toString());
+    //        let r = await fetch(url + params.toString(), requestOptions);
+    //        let p = await r.json();
+    //        word = p[0];
+    //    }
+    //    catch (e) {
+    //        console.log(e.message);
+    //    }
+    //    return word;
+    //}
+    //let f = await getWords(50, 7);
+    //console.log(f);
+
+    const options = {
         method: 'GET',
-        headers: myHeaders,
-        //body: graphql,
-        redirect: 'follow'
+        headers: {
+            'x-rapidapi-key': '65e7f85401mshad1a54cb18a19aep1d6b59jsn8e2a3e1e43ff',
+            'x-rapidapi-host': 'word-generator2.p.rapidapi.com'
+        }
     };
-    async function getWord(length: number) {
-        let word;
+    async function getWords(count: number, length: number) {
+        let wordlist;
         try {
-            let url = "https://random-word-api.herokuapp.com/word?";
+
+            let url = 'https://word-generator2.p.rapidapi.com/?';
             let params = new URLSearchParams();
+            params.append("count", count.toString());
             params.append("length", length.toString());
-            let r = await fetch(url + params.toString(), requestOptions);
-            let p = await r.json();
-            word = p[0];
+            let response = await fetch(url + params.toString(), options);
+            let result = await response.json();
+            wordlist = result.body;
+        } catch (error) {
+            console.log(error.message);
         }
-        catch (e) {
-            console.log(e.message);
-        }
-        return word;
+        return wordlist;
     }
+
+
+
+
+
     const notStarted = "Click Pick a Word to start the game!";
     const justStarted = "Take a guess!";
     const guessed = "Woohoo! You got it! Keep going!";
@@ -55,10 +86,11 @@
     let letter5: string;
     let letter6: string;
     let letter7: string;
+    let f: string[];
 
 
 
-    $(document).ready(function () {
+    $(document).ready(async function () {
         msg = document.querySelector("#msg");
         letterboxes = [...document.querySelectorAll(".letterbox")];
         letterbuttons = [...$(".letterbutton")];
@@ -69,6 +101,8 @@
         $(letterbuttons).click(guessALetter);
         displayMessage();
         changePicture();
+        f = await getWords(50, 7);
+        console.log(f);
     })
 
     async function startGame() {
@@ -79,8 +113,13 @@
         displayMessage();
 
         //async ()=> word = await getWord(7).toString();
+        //let f = await getWords(50, 7);
+        //console.log(f);
+        //word = await getWord(7);// "parties";//e;
+        let random = (Math.floor(Math.random() * 50));
+        word = f[random];
 
-        word = await getWord(7);// "parties";//e;
+        console.log(random);
         letter1 = word.substring(0, 1);
         letter2 = word.substring(1, 2);
         letter3 = word.substring(2, 3);
@@ -102,7 +141,7 @@
         $(letterbuttons).removeAttr("disabled");
         $(iGiveUpButton).removeAttr("disabled");
         $(pickAWordButton).attr("disabled");
-        
+
     }
 
     function guessALetter(event: any) {
