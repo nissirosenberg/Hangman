@@ -1,37 +1,5 @@
 ﻿namespace Hangman {
-    //let e = await getWord(7);
-    //console.log(e);
 
-    //var myHeaders = new Headers();
-    //myHeaders.append("Content-Type", "application/json");
-
-    //var graphql = JSON.stringify({
-    //    query: "",
-    //    variables: {}
-    //})
-    //var requestOptions: any = {
-    //    method: 'GET',
-    //    headers: myHeaders,
-    //    /*body: graphql,*/
-    //    redirect: 'follow'
-    //};
-    //async function getWord(length: number) {
-    //    let word;
-    //    try {
-    //        let url = "https://random-word-api.herokuapp.com/word?";
-    //        let params = new URLSearchParams();
-    //        params.append("length", length.toString());
-    //        let r = await fetch(url + params.toString(), requestOptions);
-    //        let p = await r.json();
-    //        word = p[0];
-    //    }
-    //    catch (e) {
-    //        console.log(e.message);
-    //    }
-    //    return word;
-    //}
-    //let f = await getWords(50, 7);
-    //console.log(f);
 
     const options = {
         method: 'GET',
@@ -111,11 +79,6 @@
         $(letterboxes).removeClass("text-warning").removeClass("text-black");
         gameStatus = justStarted;
         displayMessage();
-
-        //async ()=> word = await getWord(7).toString();
-        //let f = await getWords(50, 7);
-        //console.log(f);
-        //word = await getWord(7);// "parties";//e;
         let random = (Math.floor(Math.random() * 50));
         word = f[random];
 
@@ -140,7 +103,7 @@
 
         $(letterbuttons).removeAttr("disabled");
         $(iGiveUpButton).removeAttr("disabled");
-        $(pickAWordButton).attr("disabled");
+        pickAWordButton.setAttribute("disabled", "true");
 
     }
 
@@ -172,9 +135,9 @@
             $(unguessedLetterList).addClass("text-warning");
         }
         if (gameStatus == won || gameStatus == lost) {
-            $(letterbuttons).attr("disabled");
-            $(iGiveUpButton).attr("disabled");
-            $(pickAWordButton).removeAttr("disabled");
+            letterbuttons.forEach(s => s.setAttribute("disabled", "true"));
+            iGiveUpButton.setAttribute("disabled", "true");
+            pickAWordButton.removeAttribute("disabled");
         }
     }
 
@@ -183,6 +146,7 @@
         detectWinnerLoser();
         gameStatus = gaveUp;
         displayMessage();
+     
     }
 
     function changePicture() {
