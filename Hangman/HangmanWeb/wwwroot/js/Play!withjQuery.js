@@ -70,7 +70,6 @@ var Hangman;
             displayMessage();
             changePicture();
             f = yield getWords(50, 7);
-            console.log(f);
         });
     });
     function startGame() {
@@ -82,7 +81,6 @@ var Hangman;
             displayMessage();
             let random = (Math.floor(Math.random() * 50));
             word = f[random];
-            console.log(random);
             letter1 = word.substring(0, 1);
             letter2 = word.substring(1, 2);
             letter3 = word.substring(2, 3);
